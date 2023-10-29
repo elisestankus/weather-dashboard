@@ -1,6 +1,7 @@
 var zipInput = document.querySelector("#zipcodeInput");
 var countryInput = document.querySelector('#countryInput');
 var submitLocation = document.querySelector('#submitLocation');
+var cityName = '';
 var lat = 0;
 var lon = 0;
 
@@ -17,13 +18,9 @@ function getLocation(event) {
             return response.json();
         })
         .then(function(data) {
+            cityName = data.name
             lat = data.lat
             lon = data.lon
-            console.log(data.name)
-            console.log(data.lat)
-            console.log(data.lon)
-            console.log(lat)
-            console.log(lon)
             getWeather();
         })
         
@@ -41,15 +38,18 @@ function getWeather() {
             return response.json();
         })
         .then(function (data) {
+            var city = document.createElement('li');
             var todayTemp = document.createElement('li');
             var todayWind = document.createElement('li');
             var todayHumidity = document.createElement('li');
         
 
+            city.textContent = cityName
             todayTemp.textContent = 'Current temp: ' + data.main.temp + ' °F'
             todayWind.textContent = 'Current wind: ' + data.wind.speed + ' miles/hour'
             todayHumidity.textContent = 'Current humidity: ' + data.main.humidity + '%'
 
+            todayWeather.appendChild(city);
             todayWeather.appendChild(todayTemp);
             todayWeather.appendChild(todayWind);
             todayWeather.appendChild(todayHumidity);
