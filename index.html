@@ -7,9 +7,17 @@
 </head>
 <body>
     <h1>Weather Dashboard</h1>
+    <form method="POST">
+        <label for="zipcodeInput">Enter city zip code: </label>
+        <input type="text" placeholder="zip code" name="zipcodeInput" id="zipcodeInput" />
+        <label for="countryInput">Enter country code: </label>
+        <input type="text" placeholder="country code" name="countryInput" id="countryInput" />
+        <button id="submitLocation">submit</button>
+      </form>
     <section id="containerEl">
         <ul id="todayWeather"></ul>
     </section>
+
     <script src="./assets/js/keys.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
