@@ -1,3 +1,6 @@
+var zipInput = document.querySelector("#zipcodeInput");
+var countryInput = document.querySelector('#countryInput');
+
 var todayWeather = document.querySelector("#todayWeather");
 var lat = 37.91
 var lon = -122.06
