@@ -1,6 +1,9 @@
 var zipInput = document.querySelector("#zipcodeInput");
 var countryInput = document.querySelector('#countryInput');
 
+var geoQueryURL = 'http://api.openweathermap.org/geo/1.0/zip?zip=' + zipInput.value + ',' + countryInput.value + '&appid=' + APIkey
+
+
 var todayWeather = document.querySelector("#todayWeather");
 var lat = 37.91
 var lon = -122.06
