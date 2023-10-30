@@ -34,6 +34,14 @@ function getLocation(event) {
 
 }
 
+function genNewCity() {
+    var cityButton = document.createElement('button')
+    cityButton.setAttribute('cityNameAtt', cityName)
+    cityButton.textContent = cityName;
+    searchHistory.appendChild(cityButton)
+  
+  }
+
 submitLocation.addEventListener('click', getLocation)
 
 var todayWeather = document.querySelector("#todayWeather");
