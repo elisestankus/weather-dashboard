@@ -4,6 +4,13 @@ var submitLocation = document.querySelector('#submitLocation');
 var cityName = '';
 var lat = 0;
 var lon = 0;
+var searchHistory = document.querySelector('#searchHistory')
+var cityArray = [];
+const cityObj = {
+    cityName: '',
+    lat: '',
+    lon: ''
+}
 
 
 function getLocation(event) {
@@ -21,11 +28,43 @@ function getLocation(event) {
             cityName = data.name
             lat = data.lat
             lon = data.lon
+            genNewCity()
             getWeather();
         })
         
 
 }
+
+function genNewCity() {
+    var cityButton = document.createElement('button')
+    cityButton.setAttribute('cityNameAtt', cityName)
+    cityButton.textContent = cityName;
+    searchHistory.appendChild(cityButton)
+
+    var newCity = Object.create(cityObj);
+    newCity.cityName = cityName;
+    newCity.lat = lat;
+    newCity.lon = lon;
+    cityArray.push(newCity);
+    localStorage.setItem('cityArray',JSON.stringify(cityArray))
+    console.log(cityArray)
+}
+
+searchHistory.addEventListener('click', function(event) {
+    var clickedButton = event.target;
+    var cityNameAtt = clickedButton.getAttribute('cityNameAtt')
+    var cityStore = JSON.parse(localStorage.getItem('cityArray'))
+    for(i=0; i<cityStore.length; i++) {
+        if (cityNameAtt == cityStore[i].cityName) {
+            cityName = cityStore[i].cityName;
+            lat = cityStore[i].lat;
+            lon = cityStore[i].lon;
+            console.log(cityStore[i])
+            getWeather();
+        }
+  
+    }
+})
 
 submitLocation.addEventListener('click', getLocation)
 
@@ -38,20 +77,16 @@ function getWeather() {
             return response.json();
         })
         .then(function (data) {
-            var city = document.createElement('li');
-            var todayTemp = document.createElement('li');
-            var todayWind = document.createElement('li');
-            var todayHumidity = document.createElement('li');
+            var todayCity = document.querySelector('#todayCity');
+            var todayTemp = document.querySelector('#todayTemp');
+            var todayWind = document.querySelector('#todayWind');
+            var todayHumidity = document.querySelector('#todayHumidity');
         
 
-            city.textContent = cityName
-            todayTemp.textContent = 'Current temp: ' + data.main.temp + ' °F'
-            todayWind.textContent = 'Current wind: ' + data.wind.speed + ' miles/hour'
-            todayHumidity.textContent = 'Current humidity: ' + data.main.humidity + '%'
+            todayCity.textContent = cityName
+            todayTemp.textContent = data.main.temp + ' °F'
+            todayWind.textContent = data.wind.speed + ' miles/hour'
+            todayHumidity.textContent = data.main.humidity + '%'
 
-            todayWeather.appendChild(city);
-            todayWeather.appendChild(todayTemp);
-            todayWeather.appendChild(todayWind);
-            todayWeather.appendChild(todayHumidity);
 })
 }
