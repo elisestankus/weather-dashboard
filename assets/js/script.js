@@ -4,6 +4,13 @@ var submitLocation = document.querySelector('#submitLocation');
 var cityName = '';
 var lat = 0;
 var lon = 0;
+var searchHistory = document.querySelector('#searchHistory')
+var cityArray = [];
+const cityObj = {
+    cityName: '',
+    lat: '',
+    lon: ''
+}
 
 
 function getLocation(event) {
