@@ -83,7 +83,7 @@ function getWeather() {
             var todayHumidity = document.querySelector('#todayHumidity');
         
 
-            todayCity.textContent = cityName
+            todayCity.textContent = cityName + ' (' + dayjs().format('M/D/YYYY') + ')'
             todayTemp.textContent = data.main.temp + ' °F'
             todayWind.textContent = data.wind.speed + ' miles/hour'
             todayHumidity.textContent = data.main.humidity + '%'
