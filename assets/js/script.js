@@ -47,7 +47,23 @@ function genNewCity() {
     cityArray.push(newCity);
     localStorage.setItem('cityArray',JSON.stringify(cityArray))
     console.log(cityArray)
-  }
+}
+
+searchHistory.addEventListener('click', function(event) {
+    var clickedButton = event.target;
+    var cityNameAtt = clickedButton.getAttribute('cityNameAtt')
+    var cityStore = JSON.parse(localStorage.getItem('cityArray'))
+    for(i=0; i<cityStore.length; i++) {
+        if (cityNameAtt == cityStore[i].cityName) {
+            cityName = cityStore[i].cityName;
+            lat = cityStore[i].lat;
+            lon = cityStore[i].lon;
+            console.log(cityStore[i])
+            getWeather();
+        }
+  
+    }
+})
 
 submitLocation.addEventListener('click', getLocation)
 
