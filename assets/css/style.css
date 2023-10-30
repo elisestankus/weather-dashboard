@@ -1,0 +1,16 @@
+header {
+    background-color: blue;
+}
+
+.card {
+    border: 3px;
+    background-color: blue;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.green {
+    background-color: green;
+}

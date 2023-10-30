@@ -28,8 +28,9 @@ function getLocation(event) {
             cityName = data.name
             lat = data.lat
             lon = data.lon
-            genNewCity()
+            genNewCity();
             getWeather();
+            getForecast();
         })
         
 
@@ -61,6 +62,7 @@ searchHistory.addEventListener('click', function(event) {
             lon = cityStore[i].lon;
             console.log(cityStore[i])
             getWeather();
+            getForecast();
         }
   
     }
@@ -90,3 +92,42 @@ function getWeather() {
 
 })
 }
+
+function getForecast() {
+    var forecastQueryURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey + '&units=imperial'
+    fetch(forecastQueryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var date0 = document.querySelector('#day0Date');
+            var date1 = document.querySelector('#day1Date');
+            var date2 = document.querySelector('#day2Date');
+            var date3 = document.querySelector('#day3Date');
+            var date4 = document.querySelector('#day4Date');
+
+            date0.textContent = dayjs().add(1, 'day').format('M/D/YYYY')
+            date1.textContent = dayjs().add(2, 'day').format('M/D/YYYY')
+            date2.textContent = dayjs().add(3, 'day').format('M/D/YYYY')
+            date3.textContent = dayjs().add(4, 'day').format('M/D/YYYY')
+            date4.textContent = dayjs().add(5, 'day').format('M/D/YYYY')
+            
+            var day0Temp = document.querySelector('#day0Temp');
+            var day0Wind = document.querySelector('#day0Wind');
+            var day0Humidity = document.querySelector('#day0Humidity');
+
+            day0Temp.textContent = data.list[0].main.temp + ' °F'
+            day0Wind.textContent = data.list[0].wind.speed + 'miles/hour'
+            day0Humidity.textContent = data.list[0].main.humidity + '%'
+
+
+            for (i=1; i<5;i++) {
+                document.querySelector('#day'+i+'Temp').textContent = data.list[(i*8) - 1].main.temp + ' °F'
+                document.querySelector('#day'+i+'Wind').textContent = data.list[(i*8) - 1].wind.speed + ' miles/hour'
+                document.querySelector('#day'+i+'Humidity').textContent = data.list[(i*8) - 1].main.humidity + '%'
+            }
+            
+
+        })
+}
+
