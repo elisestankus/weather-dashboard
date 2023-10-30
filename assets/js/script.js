@@ -39,7 +39,14 @@ function genNewCity() {
     cityButton.setAttribute('cityNameAtt', cityName)
     cityButton.textContent = cityName;
     searchHistory.appendChild(cityButton)
-  
+
+    var newCity = Object.create(cityObj);
+    newCity.cityName = cityName;
+    newCity.lat = lat;
+    newCity.lon = lon;
+    cityArray.push(newCity);
+    localStorage.setItem('cityArray',JSON.stringify(cityArray))
+    console.log(cityArray)
   }
 
 submitLocation.addEventListener('click', getLocation)
