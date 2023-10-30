@@ -28,6 +28,7 @@ function getLocation(event) {
             cityName = data.name
             lat = data.lat
             lon = data.lon
+            genNewCity()
             getWeather();
         })
         
