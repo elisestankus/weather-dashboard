@@ -77,20 +77,16 @@ function getWeather() {
             return response.json();
         })
         .then(function (data) {
-            var city = document.createElement('li');
-            var todayTemp = document.createElement('li');
-            var todayWind = document.createElement('li');
-            var todayHumidity = document.createElement('li');
+            var todayCity = document.querySelector('#todayCity');
+            var todayTemp = document.querySelector('#todayTemp');
+            var todayWind = document.querySelector('#todayWind');
+            var todayHumidity = document.querySelector('#todayHumidity');
         
 
-            city.textContent = cityName
-            todayTemp.textContent = 'Current temp: ' + data.main.temp + ' °F'
-            todayWind.textContent = 'Current wind: ' + data.wind.speed + ' miles/hour'
-            todayHumidity.textContent = 'Current humidity: ' + data.main.humidity + '%'
+            todayCity.textContent = cityName
+            todayTemp.textContent = data.main.temp + ' °F'
+            todayWind.textContent = data.wind.speed + ' miles/hour'
+            todayHumidity.textContent = data.main.humidity + '%'
 
-            todayWeather.appendChild(city);
-            todayWeather.appendChild(todayTemp);
-            todayWeather.appendChild(todayWind);
-            todayWeather.appendChild(todayHumidity);
 })
 }
