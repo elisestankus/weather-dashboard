@@ -29,4 +29,4 @@ https://elisestankus.github.io/weather-dashboard/
 
 ## Screenshot
 
-
+<img src=./assets/weather-dashboard-screenshot.png alt='screenshot of the weather dashboard after three cities have been searched' >
