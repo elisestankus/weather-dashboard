@@ -23,7 +23,7 @@ function getLocation(event) {
     var country = countryInput.value
     console.log(zip)
     console.log(country)
-    var geoQueryURL = 'http://api.openweathermap.org/geo/1.0/zip?zip=' + zip + ',' + country + '&appid=' + APIKey
+    var geoQueryURL = 'https://api.openweathermap.org/geo/1.0/zip?zip=' + zip + ',' + country + '&appid=' + APIKey
     fetch(geoQueryURL)
         .then(function (response) {
             return response.json();
