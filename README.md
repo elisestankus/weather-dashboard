@@ -23,8 +23,6 @@ https://day.js.org/docs/en/display/format
 
 ## Link
 
-***NOTE:*** currently, the weather dashboard application does not work at the deployed link because it is unable to access the gitignored keys.js file where the APIKey variable is stored. If you want to run the code please clone the repo and add your own APIKey variable and open from the file.
-
 https://elisestankus.github.io/weather-dashboard/
 
 ## Screenshot
