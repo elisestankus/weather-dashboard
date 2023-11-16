@@ -93,9 +93,13 @@ function getWeather() {
             var todayTemp = document.querySelector('#todayTemp');
             var todayWind = document.querySelector('#todayWind');
             var todayHumidity = document.querySelector('#todayHumidity');
+            var weatherIcon = document.querySelector('#wicon')
+            var iconURL = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
+            console.log(data.weather[0].icon)
         
 
             todayCity.textContent = cityName + ' (' + dayjs().format('M/D/YYYY') + ')'
+            weatherIcon.setAttribute("src", iconURL)
             todayTemp.textContent = data.main.temp + ' °F'
             todayWind.textContent = data.wind.speed + ' miles/hour'
             todayHumidity.textContent = data.main.humidity + '%'
@@ -131,6 +135,7 @@ function getForecast() {
                 document.querySelector('#day'+i+'Wind').textContent = data.list[(i*8) - 1].wind.speed + ' miles/hour'
                 document.querySelector('#day'+i+'Humidity').textContent = data.list[(i*8) - 1].main.humidity + '%'
                 console.log(data.list[(i*8) - 1].dt_txt)
+                document.querySelector('#wiconday'+i).setAttribute('src', "https://openweathermap.org/img/wn/" + data.list[(i*8) - 1].weather[0].icon + ".png" )
             }
             
 
