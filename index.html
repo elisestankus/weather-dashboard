@@ -16,6 +16,7 @@
         <h1>Weather Dashboard</h1>
     </header>
     <form method="POST">
+        <h3>Note: the default country code is set to US. If you want to view the weather for a location outside of the United States, please enter the 2-letter country code</h3>
         <label for="zipcodeInput">Enter city zip code: </label>
         <input type="text" placeholder="zip code" name="zipcodeInput" id="zipcodeInput" />
         <label for="countryInput">Enter country code: </label>
@@ -24,7 +25,7 @@
       </form>
       <span id="searchHistory"></span>
     <section id="todayWeather" class="green">
-        <h2 id="todayCity"></h2>
+        <div id="todaycityNameIcon"><h2 id="todayCity"></h2><img id='wicon' ></div>
         <p>Temp: <span id="todayTemp"></span></p>
         <p>Wind: <span id="todayWind"></span></p>
         <p>Humidity: <span id="todayHumidity"></span></p>
@@ -32,20 +33,20 @@
     <section id="5dayForecast" class="display-inline green">
         <h2>5-Day Forecast:</h2>
         <div id="day0Forecast" class="card display-inline">
-            <h3>date: <span id="day0Date"></span></h3>
+            <h3>date: <span id="day0Date"></span></h3> <img id='wiconday1' >
             <p>Temp: <span id="day1Temp"></span></p>
             <p>Wind: <span id="day1Wind"></span></p>
             <p>Humidity: <span id="day1Humidity"></span></p>
 
         </div>
         <div id="day1Forecast" class="card display-inline">
-            <h3>date: <span id="day1Date"></span></h3>
+            <h3>date: <span id="day1Date"></span></h3> <img id='wiconday2' >
             <p>Temp: <span id="day2Temp"></span></p>
             <p>Wind: <span id="day2Wind"></span></p>
             <p>Humidity: <span id="day2Humidity"></span></p>
         </div>
         <div id="day2Forecast" class="card display-inline">
-            <h3>date: <span id="day2Date"></span></h3>
+            <h3>date: <span id="day2Date"></span></h3> <img id='wiconday3' >
             <p>Temp: <span id="day3Temp"></span></p>
             <p>Wind: <span id="day3Wind"></span></p>
             <p>Humidity: <span id="day3Humidity"></span></p>
@@ -53,7 +54,7 @@
             
         </div>
         <div id="day3Forecast" class="card display-inline">
-            <h3>date: <span id="day3Date"></span></h3>
+            <h3>date: <span id="day3Date"></span></h3> <img id='wiconday4' >
             <p>Temp: <span id="day4Temp"></span></p>
             <p>Wind: <span id="day4Wind"></span></p>
             <p>Humidity: <span id="day4Humidity"></span></p>
@@ -61,7 +62,7 @@
             
         </div>
         <div id="day4Forecast" class="card display-inline">
-            <h3>date: <span id="day4Date"></span></h3>
+            <h3>date: <span id="day4Date"></span></h3> <img id='wiconday5' >
             <p>Temp: <span id="day5Temp"></span></p>
             <p>Wind: <span id="day5Wind"></span></p>
             <p>Humidity: <span id="day5Humidity"></span></p>
