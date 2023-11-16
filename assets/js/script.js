@@ -20,7 +20,11 @@ const cityObj = {
 function getLocation(event) {
     event.preventDefault();
     var zip = zipInput.value
-    var country = countryInput.value
+    if(countryInput.value.length === 0 ) {
+        var country = 'US'
+    } else {
+         country = countryInput.value;
+    }
     console.log(zip)
     console.log(country)
     var geoQueryURL = 'https://api.openweathermap.org/geo/1.0/zip?zip=' + zip + ',' + country + '&appid=' + APIKey
